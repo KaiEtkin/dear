@@ -1,11 +1,15 @@
-import React from 'react'
-import SetupAccount from '../components/setupAccount'
+import {useState} from 'react'
+import SetupAccount from '../components/SetupAccount'
     
 
-const createfamily = () => {
+const createfamily = () => 
+{
+  async function create(deets){
+    console.log(deets)
+  }
   return (
     <div>
-        <SetupAccount />
+        <SetupAccount setDetails = {create}/>
     </div>
   )
 }

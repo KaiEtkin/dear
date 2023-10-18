@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-const SetupAccount = () => {
+const SetupAccount = ({setDetails}) => {
     const [senior, setSenior] = useState(true);
     const [familyCode, setFamilyCode] = useState("");
     const [phone, setPhone] = useState("");
@@ -38,7 +38,7 @@ const SetupAccount = () => {
     
         </>}
         <input type = "text" value = {familyCode}  placeholder = "input your family code" onChange={(e) => setFamilyCode(e.target.value)}></input>
-        <button>Go</button>
+        <button onClick = {() => setDetails({name: name, phone: phone, senior:senior, familyCode: familyCode, pfp: selectedImage})}>Go</button>
     </div>
   )
 }
