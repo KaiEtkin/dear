@@ -1,12 +1,16 @@
 import {useState} from 'react'
-
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import {storage} from '../firebase'
 const SetupAccount = ({setDetails}) => {
     const [senior, setSenior] = useState(true);
     const [familyCode, setFamilyCode] = useState("");
     const [phone, setPhone] = useState("");
     const [name, setName] = useState("");
     const [selectedImage, setSelectedImage] = useState(null);
+
+   
   return (
+
     <div>
         <button style = {{color: senior ? 'red' : 'black'}} onClick = {() => setSenior(true)}>Senior</button>
         <button style = {{color: !senior ? 'red' : 'black'}} onClick = {() => setSenior(false)}>Not a Senior</button>
