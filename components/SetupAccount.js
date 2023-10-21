@@ -1,13 +1,26 @@
 import {useState} from 'react'
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {storage} from '../firebase'
+import { useRouter } from 'next/router'
+
 const SetupAccount = ({setDetails}) => {
     const [senior, setSenior] = useState(true);
     const [familyCode, setFamilyCode] = useState("");
     const [phone, setPhone] = useState("");
     const [name, setName] = useState("");
     const [selectedImage, setSelectedImage] = useState(null);
+    const router = useRouter()
+    function finish(){
+      setDetails({name: name, phone: phone, senior:senior, familyCode: familyCode, pfp: selectedImage})
+      if(senior){
+        router.push('/feed')
+        
+      }
+      else{
+        router.push('/post')
 
+      }
+    }
    
   return (
 
@@ -42,7 +55,7 @@ const SetupAccount = ({setDetails}) => {
     
         </>}
         <input type = "text" value = {familyCode}  placeholder = "input your family code" onChange={(e) => setFamilyCode(e.target.value)}></input>
-        <button onClick = {() => setDetails({name: name, phone: phone, senior:senior, familyCode: familyCode, pfp: selectedImage})}>Go</button>
+        <button onClick = {finish}>Go</button>
     </div>
   )
 }

@@ -18,10 +18,10 @@ export default function App({ Component, pageProps }) {
       }
     }
     else{
-      if(senior == true){
-      if(path != "/feed"){
-        router.push("/feed");
-      }
+      if(senior == "true"){
+        if(path != "/feed"){
+          router.push("/feed");
+        }
       
     }
     else{
