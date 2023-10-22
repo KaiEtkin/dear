@@ -1,0 +1,46 @@
+.post{
+    max-width: 80vw;
+    max-height: 40vh;
+    scroll-snap-align: start;
+    border-radius: 20px;
+    margin: 2%;
+
+}
+.postContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    scroll-snap-align: start;
+    padding: 5%;
+}
+.details{
+    display: flex;
+    flex-direction: row;
+    width: 80vw;
+    align-items: center;
+
+}
+.details img{
+    padding :5%;
+    width: 20vw;
+    height: 20vw;
+    object-fit:cover;
+    border-radius: 200px;
+}
+.feed{
+    text-align: center;
+    scroll-snap-type: y proximity;
+    height: 100vh;
+    overflow-y: scroll;
+}
+.backToday{
+    position: fixed;
+    top: 2%;
+    left: 50%;
+    transform: translate(-50%, 0);    
+}
+.hr{
+    height: 1px;
+    width: 100%;
+    background-color: white;
+}

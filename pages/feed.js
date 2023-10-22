@@ -1,11 +1,14 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import Post from '../components/Post'
+import styles from '../styles/feed.module.css'
 
 const feed = () => {
   const [archive, setArchive] = useState([])
   const [today, setToday] = useState([])
   const [members, setMembers] = useState([])
   const [bottom, setBottom] = useState(false);
+  const ref = useRef();
+
   useEffect(()=> {
     init();
   }, [])
@@ -54,29 +57,37 @@ const feed = () => {
     console.log(members2)
     setMembers(members2)
   }
+  function flip() {
+    setBottom(!bottom);
+    ref.current.scrollTo(0, 0);
+
+  }
   return (
-    <div>
+    <div className = {styles.feed} ref = {ref}>
       {!bottom && 
+      
       <div>
         {today.map((post, index) => (
-          <div key = {index}>
-            
+            <div>
             <Post caption = {post.caption} url = {post.file} name = {post.name} pfp = {members.find(item => item.name == `${post.name}`)?.pfp}/>
-          </div>
+            <div className = {styles.hr}></div>
+
+            </div>
+            
         ))}
         <h2>That's it so far for today!</h2>
-        <button onClick = {() => setBottom(true)}>See past photos</button>
+        <button 
+        onClick = {flip}>See past photos</button>
       </div>
       }
+      
       {bottom && 
       <div>
-        <button onClick = {() => setBottom(false)}>Go back to today's photos</button>
+        <button className={styles.backToday} onClick = {flip}>Go back to today's photos</button>
 
         {archive.map((post, index) => (
-          <div key = {index}>
             
             <Post caption = {post.caption} url = {post.file} name = {post.name} pfp = {members.find(item => item.name == `${post.name}`)?.pfp}/>
-          </div>
         ))}
        
       </div>

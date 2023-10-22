@@ -2,6 +2,8 @@ import React,{useState} from 'react'
 import {useDropzone} from 'react-dropzone';
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {storage} from '../firebase'
+import styles from '../styles/post.module.css'
+
 const post = () => {
     const {acceptedFiles, getRootProps, getInputProps} = useDropzone();
     const [caption, setCaption] = useState("")
@@ -30,6 +32,7 @@ const post = () => {
                 break;
               case 'running':
                 console.log('Upload is running');
+                setMessage("Uploading...")
                 break;
             }
           }, 
@@ -76,8 +79,10 @@ const post = () => {
     }
   return (
     <div>
-        <h1>New Post!</h1>
-        <h3>Lorem ipsum dolor sit amet blah blah blah</h3>
+      <div className = {styles.squiggle}><img src = '/squig.svg' width = '100' height = '100'/></div>
+            
+          <h1 className = {styles.postHeader}>New Post!</h1>
+                 <h3>Lorem ipsum dolor sit amet blah blah blah</h3>
         <div {...getRootProps({className: 'dropzone'})}>
         <input {...getInputProps()} />
         <p>Drag 'n' drop some files here, or click to select files</p>
