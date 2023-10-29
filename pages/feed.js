@@ -7,6 +7,8 @@ const feed = () => {
   const [today, setToday] = useState([])
   const [members, setMembers] = useState([])
   const [bottom, setBottom] = useState(false);
+  const [fontSize, setFontSize] = useState(1) //0 = normal 1 = big 2 = massive
+  const [highContrast, setHighContrast] = useState(false)
   const ref = useRef();
 
   useEffect(()=> {
@@ -62,8 +64,9 @@ const feed = () => {
     ref.current.scrollTo(0, 0);
 
   }
+
   return (
-    <div className = {styles.feed} ref = {ref}>
+    <div className = {styles.feed} ref = {ref} style={{ fontSize: `${16 * fontSize}px`, backgroundColor: highContrast ? 'black' : 'inherit' }}>
       {!bottom && 
       
       <div>
@@ -75,7 +78,9 @@ const feed = () => {
             </div>
             
         ))}
-        <h2>That's it so far for today!</h2>
+        <br></br>
+        <h2 className = {styles.h2}>That's it so far for today!</h2>
+        <br></br>
         <button 
         onClick = {flip}>See past photos</button>
       </div>
@@ -83,15 +88,26 @@ const feed = () => {
       
       {bottom && 
       <div>
-        <button className={styles.backToday} onClick = {flip}>Go back to today's photos</button>
+        <button style = {{ backgroundColor: highContrast ? 'white' : 'inherit', color: highContrast ? 'black' : 'inherit'}}className={styles.backToday} onClick = {flip}>See today's photos</button>
 
         {archive.map((post, index) => (
             
-            <Post caption = {post.caption} url = {post.file} name = {post.name} pfp = {members.find(item => item.name == `${post.name}`)?.pfp}/>
+            <Post caption = {post.caption} url = {post.file} name = {post.name} pfp = {members.find(item => item.name == `${post.name}`)?.pfp} phone = {members.find(item => item.name == `${post.name}`)?.phone}/>
         ))}
        
       </div>
       }
+      <div className = {styles.footer}>
+        <h3 style = {{fontWeight: '500'}}>Switch To: </h3>
+        <div className = {styles.innerFooter}>
+        {fontSize == 1 && <h3 onClick = {() => setFontSize(1.5)}>Big Font Size</h3>}
+        {fontSize != 1 && <h3 onClick = {() => setFontSize(1)}>Normal Font Size</h3>}
+
+        {highContrast && <h3 onClick = {() => setHighContrast(false)}>Normal Contrast</h3>}
+        {!highContrast && <h3 onClick = {() => setHighContrast(true)}>High Contrast</h3>} 
+        </div>
+        
+     </div>
     </div>
   )
 }

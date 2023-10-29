@@ -22,25 +22,85 @@
 }
 .details img{
     padding :5%;
-    width: 20vw;
-    height: 20vw;
+    width: 15vw;
+    height: 15vw;
     object-fit:cover;
     border-radius: 200px;
+    transition: 0.1s ease-in-out;
+    user-select: none;
+}
+.details img:active{
+    transform: scale(0.9)
 }
 .feed{
     text-align: center;
     scroll-snap-type: y proximity;
     height: 100vh;
     overflow-y: scroll;
+
+    font-size: 16px; /* Default font size */
+
 }
 .backToday{
     position: fixed;
     top: 2%;
     left: 50%;
-    transform: translate(-50%, 0);    
+    width: 70vw;
+    box-shadow: 0px 0px 0px 0px rgba(0, 240, 255, 0.40);
+    background: #2a2a2ad1;
+    color: white;
+    transform: translate(-50%, 0);  
+    backdrop-filter: blur(12px);
+    border: 1px solid white;
+  
 }
 .hr{
     height: 1px;
     width: 100%;
     background-color: white;
 }
+
+  
+  .h1 {
+    font-size: 2.5em; /* Example: Large font size */
+  }
+  
+  .h2 {
+    font-size: 2em; /* Example: Medium font size */
+  }
+  
+  .h3 {
+    font-size: 1.6em; /* Example: Smaller font size */
+  }
+  .footer{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    width: 100vw;
+    height: 6vh;
+    align-items: center;
+    background-color: white;
+  }
+  .footer button{
+    font-size: 0.8em;
+    padding: 0.1em;
+    margin: 0.1em;
+  }
+  .footer h3{
+    font-size:4vw;
+    margin: 0 4vw;
+    cursor: pointer;
+    color: black;
+  }
+  .innerFooter{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100vw;
+  
+    align-items: center;
+    width: 100%;
+  }

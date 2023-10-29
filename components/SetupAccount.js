@@ -3,6 +3,8 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import {storage} from '../firebase'
 import { useRouter } from 'next/router'
 
+import styles from '../styles/login.module.css'
+
 const SetupAccount = ({setDetails}) => {
     const [senior, setSenior] = useState(true);
     const [familyCode, setFamilyCode] = useState("");
@@ -24,22 +26,34 @@ const SetupAccount = ({setDetails}) => {
    
   return (
 
-    <div>
-        <button style = {{color: senior ? 'red' : 'black'}} onClick = {() => setSenior(true)}>Senior</button>
-        <button style = {{color: !senior ? 'red' : 'black'}} onClick = {() => setSenior(false)}>Not a Senior</button>
+    <div className = {styles.contain}>
+      <br></br>
+      <br></br>
+
+      <h3>Are you a senior?</h3>
+      <div className = {styles.senior}>
+        <button style = {{backgroundColor: senior ? '#00F0FF' : 'white'}} onClick = {() => setSenior(true)}>Yes</button>
+        <button style = {{backgroundColor: !senior ? '#00F0FF' : 'white'}} onClick = {() => setSenior(false)}>No</button>
+        </div>
         {!senior && <>
+          <br />
+
             <input type = "text" value = {name} onChange={(e) => setName(e.target.value)} placeholder = "what's your name?"></input>
+            <br />
             <input type="tel" id="phone" name="phone"
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             required value = {phone} onChange={(e) => setPhone(e.target.value)} placeholder = "what's your phone number?"></input>
+                                <br />
+
+              <h4>Upload a profile picture!</h4>
               <input
-        type="file"
-        name="myImage"
-        onChange={(event) => {
-          console.log(event.target.files[0]);
-          setSelectedImage(event.target.files[0]);
-        }}
-      />
+                type="file"
+                name="myImage"
+                onChange={(event) => {
+                  console.log(event.target.files[0]);
+                  setSelectedImage(event.target.files[0]);
+                }}
+              />
             {selectedImage && (
                 <div>
                   <img
@@ -54,7 +68,12 @@ const SetupAccount = ({setDetails}) => {
       
     
         </>}
+        <br />
+
         <input type = "text" value = {familyCode}  placeholder = "input your family code" onChange={(e) => setFamilyCode(e.target.value)}></input>
+       
+        <br></br>
+
         <button onClick = {finish}>Go</button>
     </div>
   )

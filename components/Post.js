@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import { useSpeechSynthesis,useSpeechRecognition } from 'react-speech-kit';
 import styles from '../styles/feed.module.css'
-
-const Post = ({ caption, url, name, pfp}) => {
+import Link from 'next/link'
+const Post = ({ caption, url, name, pfp, phone}) => {
     const [image, setImage] = useState("image");
     const { speak } = useSpeechSynthesis();
     {/* const [value, setValue] = useState('');
@@ -40,8 +40,10 @@ const Post = ({ caption, url, name, pfp}) => {
           <source src={url} />
         </video>}
         <div className = {styles.details}>
+            <Link href = {`sms:/${phone}`}>
             <img src = {pfp} />
-            <h3>{name} sent you "{caption}"</h3>
+            </Link>
+            <h3 className = {styles.h3}>{name} sent you "{caption}"</h3>
         </div>
        {/*
         <textarea
