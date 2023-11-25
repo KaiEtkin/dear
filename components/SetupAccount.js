@@ -30,7 +30,7 @@ const SetupAccount = ({setDetails}) => {
       <br></br>
       <br></br>
 
-      <h3>Are you a senior?</h3>
+      <h1>Are you a senior?</h1>
       <div className = {styles.senior}>
         <button style = {{backgroundColor: senior ? '#00F0FF' : 'white'}} onClick = {() => setSenior(true)}>Yes</button>
         <button style = {{backgroundColor: !senior ? '#00F0FF' : 'white'}} onClick = {() => setSenior(false)}>No</button>
@@ -45,7 +45,8 @@ const SetupAccount = ({setDetails}) => {
             required value = {phone} onChange={(e) => setPhone(e.target.value)} placeholder = "what's your phone number?"></input>
                                 <br />
 
-              <h4>Upload a profile picture!</h4>
+              <h2>Upload a profile picture!</h2>
+              <br></br>
               <input
                 type="file"
                 name="myImage"
@@ -74,7 +75,7 @@ const SetupAccount = ({setDetails}) => {
        
         <br></br>
 
-        <button onClick = {finish}>Go</button>
+        <button className = {styles.finish} onClick = {finish}>Go</button>
     </div>
   )
 }

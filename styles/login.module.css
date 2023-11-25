@@ -11,6 +11,7 @@
     font-size: 4vw;
     background-color: #ffffff00;
     height: 5vh;
+    
     width: 80%;
 }
 .senior{
@@ -24,4 +25,7 @@
     margin: 2%;
     box-shadow: 0px 0px 0px 0px rgba(0, 240, 255, 0.40);
 
+}
+.finish{
+    font-size:2em;
 }

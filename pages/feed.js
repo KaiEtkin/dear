@@ -83,6 +83,14 @@ const feed = () => {
         <br></br>
         <button 
         onClick = {flip}>See past photos</button>
+        <br></br>
+        <br></br>
+        <br></br>
+
+        <br></br>
+        <br></br>
+        <br></br>
+
       </div>
       }
       
